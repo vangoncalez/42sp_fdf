@@ -6,7 +6,7 @@
 #    By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 15:22:09 by vaferrei          #+#    #+#              #
-#    Updated: 2021/11/21 11:34:30 by vaferrei         ###   ########.fr        #
+#    Updated: 2021/11/23 23:52:07 by vaferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ INCSDIR		= ./incs
 SRCSDIR 	= ./srcs/
 
 SRCS 		= 	$(SRCSDIR)colors.c \
+				$(SRCSDIR)plot_utils.c \
 				$(SRCSDIR)error_exit.c \
 				$(SRCSDIR)free.c \
 				$(SRCSDIR)init.c \

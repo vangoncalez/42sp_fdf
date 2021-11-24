@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 11:47:49 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 19:45:43 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:45:33 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define GREY6			0x1E1E1E
 # define GREY5			0x333333
 # define GREY4			0x252526
+# define GREY3			0x5e5e5e
 # define YELLOW			0xDCDCAA
 # define GREEN3			0x2F6342
 # define GREEN1			0x5AC983

@@ -6,52 +6,18 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:39:24 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 23:12:46 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/24 00:05:40 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fdf.h"
 
-static void	plotVectorHigh(t_img *img, t_vector vector, int color);
-static void	plotVectorLow(t_img *img, t_vector vector, int color);
-static void	plot_pixel(t_img *img, t_vector vector, t_plot	plot, int color);
+static void	plot_vector_high(t_img *img, t_vector vector);
+static void	plot_vector_low(t_img *img, t_vector vector);
+static void	plot_pixel(t_img *img, t_vector vector, t_plot plot);
+static void	plot_size(t_img *img, t_vector vec, t_vector nv1, t_vector nv2);
 
-void	rectangle(t_img *img, t_vector vector, int color)
-{
-	int	i;
-	int	x;
-	int	y;
-	int	w;
-	int	h;
-
-	x = vector.x1;
-	y = vector.y1;
-	w = vector.x2;
-	h = vector.y2;
-	i = y + 1;
-	plot_vector(img, get_plot_vector(x, y, x + w, y), GREY5);
-	plot_vector(img, get_plot_vector(x, y + h, x + w, y + h), GREY5);
-	plot_vector(img, get_plot_vector(x, y, x, y + h), GREY5);
-	plot_vector(img, get_plot_vector(x + w, y, x + w, y + h), GREY5);
-	while (i < y + h)
-	{
-		plot_vector(img, get_plot_vector(x + 1, i, x + w - 1, i), color);
-		i++;
-	}
-}
-
-t_vector	get_plot_vector(float x1, float y1, float x2, float y2)
-{
-	t_vector	vector;
-
-	vector.x1 = x1;
-	vector.x2 = x2;
-	vector.y1 = y1;
-	vector.y2 = y2;
-	return (vector);
-}
-
-static void	plotVectorLow(t_img *img, t_vector vector, int color)
+static void	plot_vector_low(t_img *img, t_vector vector)
 {
 	t_plot	plot;
 
@@ -68,7 +34,7 @@ static void	plotVectorLow(t_img *img, t_vector vector, int color)
 	plot.error_xy = (2 * plot.delta_y) - plot.delta_x;
 	while (plot.x <= vector.x2)
 	{
-		plot_pixel(img, vector, plot, color);
+		plot_pixel(img, vector, plot);
 		if (plot.error_xy > 0)
 		{
 			plot.y = plot.y + plot.yi;
@@ -80,19 +46,18 @@ static void	plotVectorLow(t_img *img, t_vector vector, int color)
 	}
 }
 
-static void	plot_pixel(t_img *img, t_vector vector, t_plot	plot, int color)
+static void	plot_pixel(t_img *img, t_vector vector, t_plot plot)
 {
 	int	new_color;
 
-	if (color == -1)
-		new_color = get_color(vector, plot.x, plot.y);
+	if (vector.color1 == vector.color2)
+		new_color = vector.color1;
 	else
-		new_color = color;
+		new_color = get_color(vector, plot.x, plot.y);
 	pixel_to_image(img, plot.x, plot.y, new_color);
-
 }
 
-static void	plotVectorHigh(t_img *img, t_vector vector, int color)
+static void	plot_vector_high(t_img *img, t_vector vector)
 {
 	t_plot	plot;
 
@@ -109,7 +74,7 @@ static void	plotVectorHigh(t_img *img, t_vector vector, int color)
 	plot.error_xy = (2 * plot.delta_x) - plot.delta_y;
 	while (plot.y <= vector.y2)
 	{
-		plot_pixel(img, vector, plot, color);
+		plot_pixel(img, vector, plot);
 		 if (plot.error_xy > 0)
 		{
 			plot.x = plot.x + plot.xi;
@@ -121,32 +86,42 @@ static void	plotVectorHigh(t_img *img, t_vector vector, int color)
 	}
 }
 
-
+static void	plot_size(t_img *img, t_vector vec, t_vector nv1, t_vector nv2)
+{
+	if (ft_abs(vec.y2 - vec.y1) < ft_abs(vec.x2 - vec.x1))
+	{
+		if (vec.x1 > vec.x2)
+			plot_vector_low(img, nv1);
+		else
+			plot_vector_low(img, nv2);
+	}
+	else
+	{
+		if (vec.y1 > vec.y2)
+			plot_vector_high(img, nv1);
+		else
+			plot_vector_high(img, nv2);
+	}
+}
 
 void	plot_vector(t_img *img, t_vector vector, int color)
 {
-	int			new_color;
 	t_vector	new_vector1;
 	t_vector	new_vector2;
 
-	new_vector1 = get_plot_vector(vector.x2, vector.y2, vector.x1, vector.y1);
-	new_vector2 = get_plot_vector(vector.x1, vector.y1, vector.x2, vector.y2);
-	if (color == -1)
-		new_color = get_color(vector, vector.x1, vector.y1);
-	else
-		new_color = color;
-	if (ft_abs(vector.y2 - vector.y1) < ft_abs(vector.x2 - vector.x1))
+	if (color == -2)
 	{
-		if (vector.x1 > vector.x2)
-			plotVectorLow(img, new_vector1, new_color);
-		else
-			plotVectorLow(img, new_vector2, new_color);
+		vector.color1 = BLUE;
+		vector.color2 = GREEN;
 	}
-	else
+	else if (color != -1)
 	{
-		if (vector.y1 > vector.y2)
-			plotVectorHigh(img, new_vector1, new_color);
-		else
-			plotVectorHigh(img, new_vector2, new_color);
+		vector.color1 = color;
+		vector.color2 = color;
 	}
+	new_vector1 = get_new_vector(vector.x2, vector.y2, vector.x1, vector.y1);
+	new_vector1 = get_new_color(new_vector1, vector.color2, vector.color1);
+	new_vector2 = get_new_vector(vector.x1, vector.y1, vector.x2, vector.y2);
+	new_vector2 = get_new_color(new_vector2, vector.color1, vector.color2);
+	plot_size(img, vector, new_vector1, new_vector2);
 }

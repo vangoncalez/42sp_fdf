@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:39:07 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 23:13:44 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/24 00:17:03 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	key_hook(int keycode, t_fdf *fdf)
 	if (keycode == K_P && fdf->view->view != 0)
 		fdf->view->view = 2;
 
-	if (keycode == K_C && fdf->view->view != 0)
+	if (keycode == K_C)
 	{
 		if (fdf->view->colors == 0)
 			fdf->view->colors = 1;
@@ -114,16 +114,9 @@ int	key_hook(int keycode, t_fdf *fdf)
 			fdf->view->colors = 0;
 	}
 	if (keycode == TAB)
-	{
 		fdf->view->view = 1;
 
-	}
 	vector_process(fdf);
 	return (0);
 }
 
-int	expose_hook(t_fdf *fdf)
-{
-	vector_process(fdf);
-	return (0);
-}

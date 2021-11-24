@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:40:14 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 19:45:49 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/23 23:40:00 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ static void	write_instructions_b(t_fdf *fdf);
 void	instructions(t_fdf *fdf)
 {
 	clear_image(fdf->img, GREY6);
-	rectangle(fdf->img, get_plot_vector(400, 180, 400, 60), GREEN3);
-	rectangle(fdf->img, get_plot_vector(400, 260, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(400, 400, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(400, 539, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(400, 679, 400, 60), PINK3);
-	rectangle(fdf->img, get_plot_vector(540, 260, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(540, 400, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(540, 539, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(680, 260, 120, 120), GREY4);
-	rectangle(fdf->img, get_plot_vector(680, 400, 120, 258), GREY4);
+	rectangle(fdf->img, get_new_vector(400, 180, 400, 60), GREEN3);
+	rectangle(fdf->img, get_new_vector(400, 260, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(400, 400, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(400, 539, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(400, 679, 400, 60), PINK3);
+	rectangle(fdf->img, get_new_vector(540, 260, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(540, 400, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(540, 539, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(680, 260, 120, 120), GREY4);
+	rectangle(fdf->img, get_new_vector(680, 400, 120, 258), GREY4);
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img->img, 0, 0);
 	draw_arrows(fdf->img);
 	mlx_string_put(fdf->mlx, fdf->win, 528, 213, C_WHITE, \
@@ -42,18 +42,18 @@ void	instructions(t_fdf *fdf)
 
 static void	draw_arrows(t_img *img)
 {
-	plot_vector(img, get_plot_vector(460, 450, 460, 460), ORANGE);
-	plot_vector(img, get_plot_vector(460, 480, 460, 490), ORANGE);
-	plot_vector(img, get_plot_vector(440, 470, 450, 470), ORANGE);
-	plot_vector(img, get_plot_vector(470, 470, 480, 470), ORANGE);
-	plot_vector(img, get_plot_vector(460, 450, 455, 455), ORANGE);
-	plot_vector(img, get_plot_vector(460, 450, 465, 455), ORANGE);
-	plot_vector(img, get_plot_vector(480, 470, 475, 465), ORANGE);
-	plot_vector(img, get_plot_vector(480, 470, 475, 475), ORANGE);
-	plot_vector(img, get_plot_vector(460, 490, 455, 485), ORANGE);
-	plot_vector(img, get_plot_vector(460, 490, 465, 485), ORANGE);
-	plot_vector(img, get_plot_vector(440, 470, 445, 465), ORANGE);
-	plot_vector(img, get_plot_vector(440, 470, 445, 475), ORANGE);
+	plot_vector(img, get_new_vector(460, 450, 460, 460), ORANGE);
+	plot_vector(img, get_new_vector(460, 480, 460, 490), ORANGE);
+	plot_vector(img, get_new_vector(440, 470, 450, 470), ORANGE);
+	plot_vector(img, get_new_vector(470, 470, 480, 470), ORANGE);
+	plot_vector(img, get_new_vector(460, 450, 455, 455), ORANGE);
+	plot_vector(img, get_new_vector(460, 450, 465, 455), ORANGE);
+	plot_vector(img, get_new_vector(480, 470, 475, 465), ORANGE);
+	plot_vector(img, get_new_vector(480, 470, 475, 475), ORANGE);
+	plot_vector(img, get_new_vector(460, 490, 455, 485), ORANGE);
+	plot_vector(img, get_new_vector(460, 490, 465, 485), ORANGE);
+	plot_vector(img, get_new_vector(440, 470, 445, 465), ORANGE);
+	plot_vector(img, get_new_vector(440, 470, 445, 475), ORANGE);
 }
 
 static void	write_instructions_a(t_fdf *fdf)

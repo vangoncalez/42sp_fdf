@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:20:52 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 22:54:12 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/23 23:55:45 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ static void	check_input(int argc, char **argv)
 		error_exit(3);
 }
 
-void	pixel_to_image(t_img *img, float x, float y, int color)
+int	expose_hook(t_fdf *fdf)
 {
-	if (x >= 0 && x < W_WIDTH && y >= 0 && y < W_HEIGHT)
-		*(int *)(img->mem + (int)(idx(y, x, W_WIDTH) * img->bits_pixel)) =
-			color;
+	vector_process(fdf);
+	return (0);
 }

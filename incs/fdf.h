@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:39:18 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 22:49:16 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/23 23:51:56 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,23 @@
 # include <math.h>
 # include "../libs/libft/libft.h"
 # include "../libs/mlx_linux/mlx.h"
-# include <stdio.h> ///apagar
 # include "macro.h"
 
+////apagar
+# include <stdio.h>
+////apagar
+
 typedef struct	s_plot {
-	int	x;
-	int	y;
-	int	xi;
-	int	yi;
-	int	delta_x;
-	int	delta_y;
-	int	error_xy;
+	float	x;
+	float	y;
+	float	xi;
+	float	yi;
+	float	delta_x;
+	float	delta_y;
+	float	error_xy;
 }				t_plot;
 
-
+/////apagar
 
 typedef struct	s_point {
 	float	x;
@@ -130,8 +133,8 @@ void	clear_image(t_img *img, int color);
 void	pixel_to_image(t_img *img, float x, float y, int color);
 void	rectangle(t_img *img, t_vector vector, int color);
 void	plot_vector(t_img *img, t_vector vector, int color);
-t_vector get_plot_vector(float x1, float y1, float x2, float y2);
-
+t_vector get_new_vector(float x1, float y1, float x2, float y2);
+t_vector	get_new_color(t_vector	 vector, int color1, int color2);
 
 //utils
 float	ft_abs(float number);
@@ -157,3 +160,6 @@ void	vector_rotate_z(t_vector *vector, float angle, int i);
 void	vector_view(t_vector *vector, int i, int view);
 
 #endif
+
+
+

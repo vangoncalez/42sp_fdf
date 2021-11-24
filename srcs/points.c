@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:24:40 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 16:08:32 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:45:48 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_point	**init_points(t_fdf *fdf)
 			pts[i][j].x = 0;
 			pts[i][j].y = 0;
 			pts[i][j].z = 0;
-			pts[i][j].color = 0;
+			pts[i][j].color = GREY3;
 			j++;
 		}
 		i++;

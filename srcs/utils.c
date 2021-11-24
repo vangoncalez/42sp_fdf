@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 21:39:11 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/21 16:10:11 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/23 23:53:50 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	move_scale(t_fdf *fdf)
 		max_x = (W_WIDTH) / (float)fdf->map->count_x;
 		max_y = (W_HEIGHT) / (float)fdf->map->count_y;
 		max_z = (W_HEIGHT) / delta_z;
-		fdf->view->scale = min_value(max_x, max_y);
-		fdf->view->scale = min_value(fdf->view->scale, max_z);
-		fdf->view->scale /= 2;
+		fdf->view->scale = min_value(min_value(max_x, max_y), max_z) / 2;
 		fdf->view->move_x = W_WIDTH / 2;
 		fdf->view->move_y = (W_HEIGHT / 2) + ((gama_z * fdf->view->scale) / 2);
 	}
