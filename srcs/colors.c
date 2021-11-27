@@ -6,14 +6,14 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 22:13:25 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/23 23:58:33 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/26 23:15:35 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fdf.h"
-static int		gradiente(int color1, int color2, double percent);
-static double	get_percent(double start, double end, double search);
+
 static double	color(double start, double end, double percent);
+static int		gradiente(int color1, int color2, double percent);
 
 void	clear_image(t_img *img, int color)
 {
@@ -53,25 +53,12 @@ int	get_color(t_vector vector, double x, double y)
 	return (color);
 }
 
-static double	get_percent(double start, double end, double search)
-{
-	if (search == start)
-		return (0.0);
-	if (search == end)
-		return (1.0);
-	if (start == end)
-		return (0.0);
-	return ((search - start) / (end - start));
-}
-
 static int	gradiente(int color1, int color2, double percent)
 {
 	int	r;
 	int	g;
 	int	b;
 
-	if (color1 == color2)
-		return (color1);
 	if (percent == 0.00)
 		return (color1);
 	if (percent == 1.00)
@@ -87,4 +74,17 @@ static double	color(double start, double end, double percent)
 	if (start == end)
 		return (start);
 	return (start * (1.0 - percent) + (end * percent));
+}
+
+void	make_pallet(t_vector *vector, t_fdf *fdf, int color, int i)
+{
+	float	percent;
+
+	if (color == -2)
+	{
+		percent = get_percent(fdf->map->min_z, fdf->map->max_z, vector[i].z1);
+		vector[i].color1 = gradiente(GREEN1, PURPLE, percent);
+		percent = get_percent(fdf->map->min_z, fdf->map->max_z, vector[i].z2);
+		vector[i].color2 = gradiente(GREEN1, PURPLE, percent);
+	}
 }

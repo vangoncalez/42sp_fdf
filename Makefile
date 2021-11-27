@@ -6,7 +6,7 @@
 #    By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 15:22:09 by vaferrei          #+#    #+#              #
-#    Updated: 2021/11/23 23:52:07 by vaferrei         ###   ########.fr        #
+#    Updated: 2021/11/26 23:18:56 by vaferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,13 @@ INCSDIR		= ./incs
 SRCSDIR 	= ./srcs/
 
 SRCS 		= 	$(SRCSDIR)colors.c \
-				$(SRCSDIR)plot_utils.c \
 				$(SRCSDIR)error_exit.c \
 				$(SRCSDIR)free.c \
 				$(SRCSDIR)init.c \
 				$(SRCSDIR)instructions.c \
 				$(SRCSDIR)keycode.c \
 				$(SRCSDIR)main.c \
+				$(SRCSDIR)plot_utils.c \
 				$(SRCSDIR)plot.c \
 				$(SRCSDIR)points.c \
 				$(SRCSDIR)utils.c \
@@ -82,10 +82,3 @@ fclean: clean
 	@make clean -C $(MLXDIR)
 
 .PHONY: clean fclean re rebonus all bonus
-
-# Colors
-GREEN	= \033[32;1m
-RED		= \033[31;1m
-YELLOW	= \033[33;1m
-CYAN	= \033[36;1m
-RC		= \033[0m

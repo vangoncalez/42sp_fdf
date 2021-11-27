@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:49:40 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/22 21:14:53 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/26 23:16:42 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,33 @@ static t_vector	*init_vectors_iteration(t_fdf *fdf, t_vector *vector, int j)
 	}
 	fdf->actual_k = k;
 	return (vector);
+}
+
+t_vector	make_new_vector(t_vector vector, int side)
+{
+	t_vector	new_vector;
+
+	if (side == 1)
+	{
+		new_vector.x1 = vector.x1;
+		new_vector.x2 = vector.x2;
+		new_vector.y1 = vector.y1;
+		new_vector.y2 = vector.y2;
+		new_vector.z1 = vector.z1;
+		new_vector.z2 = vector.z2;
+		new_vector.color1 = vector.color1;
+		new_vector.color2 = vector.color2;
+	}
+	else
+	{
+		new_vector.x1 = vector.x2;
+		new_vector.x2 = vector.x1;
+		new_vector.y1 = vector.y2;
+		new_vector.y2 = vector.y1;
+		new_vector.z1 = vector.z2;
+		new_vector.z2 = vector.z1;
+		new_vector.color1 = vector.color2;
+		new_vector.color2 = vector.color1;
+	}
+	return (new_vector);
 }

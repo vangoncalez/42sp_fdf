@@ -6,7 +6,7 @@
 /*   By: vaferrei <vaferrei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 21:24:40 by vaferrei          #+#    #+#             */
-/*   Updated: 2021/11/22 23:45:48 by vaferrei         ###   ########.fr       */
+/*   Updated: 2021/11/24 23:03:59 by vaferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	make_points(char **split, int i, int j, t_map *map)
 		map->pts[i][j].z = (float)ft_atoi(split[i]);
 	if (map->max_z < map->pts[i][j].z && map->pts[i][j].z > 0)
 		map->max_z = (float)map->pts[i][j].z;
-	if (map->min_z < map->pts[i][j].z && map->pts[i][j].z < 0)
+	if (map->min_z > map->pts[i][j].z && map->pts[i][j].z < 0)
 		map->min_z = (float)map->pts[i][j].z;
 	free(split[i]);
 }
