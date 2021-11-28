@@ -47,7 +47,7 @@ t_vector	get_new_vector(float x1, float y1, float x2, float y2)
 	return (vector);
 }
 
-t_vector	get_new_color(t_vector	 vector, int color1, int color2)
+t_vector	get_new_color(t_vector vector, int color1, int color2)
 {
 	vector.color1 = color1;
 	vector.color2 = color2;

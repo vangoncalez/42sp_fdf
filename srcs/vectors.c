@@ -49,7 +49,7 @@ static t_vector	init_vectors_x(t_fdf *fdf, t_vector vector, int i, int j)
 	vector.z2 = fdf->map->pts[i + 1][j].z * fdf->view->scale_z;
 	vector.color2 = fdf->map->pts[i + 1][j].color;
 	vector.z_pptve = max_value((fdf->map->max_z - fdf->map->min_z), \
-	   max_value(fdf->map->count_x, fdf->map->count_y));
+		max_value(fdf->map->count_x, fdf->map->count_y));
 	return (vector);
 }
 
@@ -64,7 +64,7 @@ static t_vector	init_vectors_y(t_fdf *fdf, t_vector vector, int i, int j)
 	vector.z2 = fdf->map->pts[i][j + 1].z * fdf->view->scale_z;
 	vector.color2 = fdf->map->pts[i][j + 1].color;
 	vector.z_pptve = max_value((fdf->map->max_z - fdf->map->min_z), \
-	   max_value(fdf->map->count_x, fdf->map->count_y));
+		max_value(fdf->map->count_x, fdf->map->count_y));
 	return (vector);
 }
 
