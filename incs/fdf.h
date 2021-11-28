@@ -13,7 +13,6 @@
 #ifndef FDF_H
 # define FDF_H
 
-//libraries
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -22,84 +21,45 @@
 # include "../libs/mlx_linux/mlx.h"
 # include "macro.h"
 # include "structs.h"
-
-////apagar
 # include <stdio.h>
-/////
 
-//colors.c(5)
 void		clear_image(t_img *img, int color);
 int			get_color(t_vector vector, double x, double y);
 void		make_pallet(t_vector *vector, t_fdf *fdf, int color, int i);
-
-//error_exit(2)
-void		error_exit (int error);
-void		success_exit (int success);
-
-//free(5)
+void		error_exit(int error);
+void		success_exit(int success);
 void		free_error(t_fdf *fdf, int local);
 void		free_success(t_fdf *fdf, int local);
-
-//init(5)
 t_fdf		*init_fdf(void);
 t_map		*init_map(char *file_map);
 t_view		*init_view(void);
 t_img		*init_img(t_fdf *fdf);
-
-//instructions(4)
 void		instructions(t_fdf *fdf);
-
-
-///keycode(5)
 int			key_hook(int keycode, t_fdf *fdf);
-
-//main(3)
 int			expose_hook(t_fdf *fdf);
-
-//plot_utils(5)
 void		rectangle(t_fdf *fdf, t_vector vector, int color);
-t_vector 	get_new_vector(float x1, float y1, float x2, float y2);
-t_vector	get_new_color(t_vector	 vector, int color1, int color2);
+t_vector	get_new_vector(float x1, float y1, float x2, float y2);
+t_vector	get_new_color(t_vector vector, int color1, int color2);
 void		pixel_to_image(t_img *img, float x, float y, int color);
 double		get_percent(double start, double end, double search);
-
-////plot(5)
 void		plot_vector(t_fdf *fdf, t_vector vector, int color);
 t_vector	make_new_vector(t_vector vector, int side);
-
-//points(4)
-t_point 	**init_points(t_fdf *fdf);
+t_point		**init_points(t_fdf *fdf);
 void		get_points(char *file_name, t_map *map);
 void		points_center(t_fdf *fdf);
-
-//utils(5)
 float		ft_abs(float number);
 float		max_value(float number1, float number2);
 float		min_value(float number1, float number2);
 void		move_scale(t_fdf *fdf);
 int			idx(int row, int col, int dim);
-
-//vector_process(5)
 void		vector_process(t_fdf *fdf);
 void		vector_scale(t_vector *vector, float scale_factor, int i);
 void		vector_move(t_vector *vector, int move_x, int move_y, int i);
 int			vector_count(t_fdf *fdf);
-
-//vector_rotate(3)
 void		vector_rotate_x(t_vector *vector, float angle, int i);
 void		vector_rotate_y(t_vector *vector, float angle, int i);
 void		vector_rotate_z(t_vector *vector, float angle, int i);
-
-//vector_view(3)
 void		vector_view(t_vector *vector, int i, int view);
-
-//vectors (5)
 t_vector	*init_vectors(t_fdf *fdf);
 
-
-
-
 #endif
-
-
-

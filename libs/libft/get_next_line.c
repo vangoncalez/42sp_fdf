@@ -27,7 +27,7 @@ static char	*make_backup(int fd, char *backup, char	*buffer)
 	while (control == 0 && readbuffer != 0)
 	{
 		readbuffer = read(fd, buffer, BUFFER_SIZE);
-		if (readbuffer == -1 )
+		if (readbuffer == -1)
 		{
 			free(buffer);
 			return (NULL);

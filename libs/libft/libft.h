@@ -25,14 +25,11 @@
 #  define OPEN_MAX 100
 # endif
 
-
-
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *str, size_t n );

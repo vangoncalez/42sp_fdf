@@ -13,10 +13,10 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	s_plot {
+typedef struct s_plot {
 	float	x;
 	float	y;
-	float	z; //apenas para cor
+	float	z;
 	float	xi;
 	float	yi;
 	float	delta_x;
@@ -24,29 +24,29 @@ typedef struct	s_plot {
 	float	error_xy;
 }				t_plot;
 
-typedef struct	s_point {
+typedef struct s_point {
 	float	x;
 	float	y;
 	float	z;
 	int		color;
 }				t_point;
 
-typedef struct	s_vector {
+typedef struct s_vector {
 	float	x1;
 	float	y1;
-	float	z1; //nao usa para imprimir
+	float	z1;
 	int		color1;
 	float	x2;
 	float	y2;
-	float	z2; //nao usa para imprimir
+	float	z2;
 	int		color2;
 	float	z_pptve;
 }				t_vector;
 
 typedef struct s_view
 {
-	int		colors; //se ativar a letra c
-	int		view; //0: nada 1: iso, 2: perspective, 3: top
+	int		colors;
+	int		view;
 	float	scale;
 	float	scale_z;
 	float	move_x;
@@ -56,17 +56,17 @@ typedef struct s_view
 	float	angle_z;
 }	t_view;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int			count_x;
 	int			count_y;
 	float		min_z;
 	float		max_z;
 	t_point		**pts;
-	t_vector 	*vectors;
+	t_vector	*vectors;
 }				t_map;
 
-typedef struct	s_img {
+typedef struct s_img {
 	void	*img;
 	char	*mem;
 	int		bits_pixel;
@@ -74,13 +74,12 @@ typedef struct	s_img {
 	int		endian;
 }				t_img;
 
-typedef struct	s_fdf {
+typedef struct s_fdf {
 	void		*mlx;
 	void		*win;
 	t_img		*img;
 	t_map		*map;
 	t_view		*view;
-	// t_vector	plot;
 	int			actual_k;
 }				t_fdf;
 
