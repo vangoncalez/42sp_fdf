@@ -21,7 +21,6 @@
 # include "../libs/mlx_linux/mlx.h"
 # include "macro.h"
 # include "structs.h"
-# include <stdio.h>
 
 void		clear_image(t_img *img, int color);
 int			get_color(t_vector vector, double x, double y);

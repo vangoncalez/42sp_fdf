@@ -48,10 +48,11 @@ static void	check_input(int argc, char **argv)
 	char	*extension;
 	int		fd;
 
-	extension = ".fdf";
 	if (argc != 2)
 		error_exit(1);
 	result = ft_strchr(argv[1], '.');
+	if (result == NULL)
+		error_exit(2);
 	extension = ft_strdup(".fdf");
 	if (ft_strncmp(result, extension, 5) != 0)
 	{

@@ -12,8 +12,8 @@
 
 NAME 		= fdf
 
-MLX 		= libmlx_Linux.a
-LIBFT 		= libft.a
+MLX         = ./libs/mlx_linux/libmlx_Linux.a
+LIBFT       = ./libs/libft/libft.a
 
 LFTDIR		= ./libs/libft/
 MLXDIR		= ./libs/mlx_linux/
@@ -36,12 +36,12 @@ SRCS 		= 	$(SRCSDIR)colors.c \
 				$(SRCSDIR)vector_view.c \
 				$(SRCSDIR)vectors.c
 
-OBJS=$(notdir $(SRCS:.c=.o))
+OBJS=$(SRCS:.c=.o)
+
 
 CFLAGS		= -Wall -Wextra -Werror
 CC 			= clang
 MLXCFLAGS 	= -lm -lbsd -lmlx -lXext -lX11
-CFI 		= -I$(INCSDIR)
 
 RM =rm -f
 
@@ -49,17 +49,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(LFTDIR) -L $(MLXDIR) -lft $(MLXCFLAGS)
-	mkdir -p objs
-	mv $(OBJS) objs/
-
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -g -c -I ./incs/ $(SRCS)
 
 $(MLX):
-	@make -C $(MLXDIR)
+	make -C $(MLXDIR)
 
 $(LIBFT):
-	@make -C $(LFTDIR)
+	make -C $(LFTDIR)
 
 bonus: all
 
@@ -68,12 +63,12 @@ re: fclean all
 rebonus: fclean bonus
 
 clean:
-	@make clean -C $(LFTDIR)
-	$(RM) -rf $(OBJS) $(BONUS_OBJS) objs/
+	make clean -C $(LFTDIR)
+	$(RM) -rf $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) -rf $(NAME) $(BONUS_OBJ) objs/
-	@make fclean -C $(LFTDIR)
-	@make clean -C $(MLXDIR)
+	$(RM) -rf $(NAME) $(BONUS_OBJ)
+	make fclean -C $(LFTDIR)
+	make clean -C $(MLXDIR)
 
 .PHONY: clean fclean re rebonus all bonus
