@@ -13,7 +13,6 @@
 #ifndef MACRO_H
 # define MACRO_H
 
-//keycode
 # define TAB			65289
 # define ESC			65307
 # define K_F1			65470
@@ -36,20 +35,14 @@
 # define K_S			115
 # define K_T			116
 # define K_W			119
-
-//variables of window
 # define W_WIDTH		1200
 # define W_HEIGHT		900
 # define W_TITLE		"FDF"
 # define P_HORIZONTAL	100
 # define P_VERTICAL		100
-
-//angles in rad
 # define ANG_1			0.01745329
 # define ANG_30			0.52359877
 # define ANG_45			0.78539816
-
-//colors
 # define RED			0xFF2222
 # define BLUE			0x2222FF
 # define YELLOW			0xDCDCAA
@@ -67,8 +60,6 @@
 # define PINK3			0x4D313A
 # define PINK1			0xC57991
 # define ORANGE			0xCE723B
-
-//hexa
 # define HEX_BASE		"0123456789abcdef"
 
 #endif

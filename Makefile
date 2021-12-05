@@ -12,11 +12,9 @@
 
 NAME 		= fdf
 
-#libraries
 MLX 		= libmlx_Linux.a
 LIBFT 		= libft.a
 
-#dirs
 LFTDIR		= ./libs/libft/
 MLXDIR		= ./libs/mlx_linux/
 INCSDIR		= ./incs
@@ -40,16 +38,13 @@ SRCS 		= 	$(SRCSDIR)colors.c \
 
 OBJS=$(notdir $(SRCS:.c=.o))
 
-#compilation
 CFLAGS		= -Wall -Wextra -Werror
 CC 			= clang
 MLXCFLAGS 	= -lm -lbsd -lmlx -lXext -lX11
 CFI 		= -I$(INCSDIR)
 
-#common commands
 RM =rm -f
 
-#rules
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
